@@ -4,7 +4,10 @@ import scrapy
 class IkeaSpider(scrapy.Spider):
     name = "ikea"
     allowed_domains = ["ikea.com"]
-    start_urls = ["https://www.ikea.com/us/en/p/malm-6-drawer-dresser-white-30360468/"]
+
+    def __init__(self, url, *args, **kwargs):
+        super(IkeaSpider, self).__init__(*args, **kwargs)
+        self.start_urls = [url]
 
     def parse(self, response):
         json_product = response.xpath('//div[contains(@class, "pip-product__subgrid")]')
