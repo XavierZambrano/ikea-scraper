@@ -20,6 +20,8 @@ class IkeaSpider(scrapy.Spider):
         data_online_sellable = json_product.xpath('./@data-online-sellable').get()
         data_product_price = json_product.xpath('./@data-product-price').get()
         data_use_observe_product_details = json_product.xpath('./@data-use-observe-product-details').get()
+
+        # data_hydration_props have all the product data (images, reviews, product details, etc.)
         data_hydration_props = json_product.xpath('./@data-hydration-props').get()
 
         yield {
