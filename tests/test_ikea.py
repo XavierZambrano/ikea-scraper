@@ -18,7 +18,10 @@ class TestIkeaScraper(unittest.TestCase):
         self.spider.crawler = crawler
 
     def test_parse(self):
-        fake_response = fake_response_from_file('assets/30360468.html')
+        fake_response = fake_response_from_file(
+            'assets/30360468.html',
+            'https://www.ikea.com/us/en/p/malm-chest-of-6-drawers-white-30360468/'
+        )
         expected_result = {'data_product_id': '30360468', 'data_product_type': 'ART', 'data_product_rating': '4.5', 'data_online_sellable': 'true', 'data_product_price': '299.99', 'data_use_observe_product_details': 'true', 'data_product_name': 'MALM'}
 
         result = self.spider.parse(fake_response)
